@@ -12,7 +12,19 @@ def get_indices_of_item_weights(weights, length, limit):
     """
     YOUR CODE HERE
     """
+    for index in range(length):
+        hash_table_insert(ht, weights[index], index)
 
+    for index in range(length):
+        weight_item_difference = limit - weights[index]
+
+        difference = hash_table_retrieve(ht, weight_item_difference)
+
+        if difference is not None:
+            if difference >= index:
+                return (difference, index)
+            else:
+                return (index, difference)
     return None
 
 
